@@ -100,6 +100,7 @@ for ifn, fn in enumerate(filelist):
             print("==========")
             print(directory+fn, str(t), str(Trange))
             print("==========")
+            sys.exit("Note!! This way of calculating index means cells can be in different places. Could be a problem if you have same temperatures occurring near surface and aloft. Comment this line out once you've thought about it and adapted the code")            
             Tindex = xr.where((xr_t >= Trange[0]) & (xr_t <=Trange[1]), 1, np.nan)
 
             T_mn = xr_t.where(Tindex==1).mean("model_level_number")
